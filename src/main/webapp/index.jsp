@@ -24,13 +24,18 @@
                     <c:choose>
                         <c:when test="${cookie.idioma.value eq 'es'}">Seleccionar Idioma</c:when>
                         <c:when test="${cookie.idioma.value eq 'en'}">Select Language</c:when>
-                        <c:when test="${cookie.idioma.value eq 'fr'}">Sélectionnez la langue</c:when>
+                        <c:when test="${cookie.idioma.value eq 'fr'}">Sélectionnez la langue</c:when>                        
                         <c:otherwise>Seleccionar Idioma</c:otherwise>
                     </c:choose>
                 </h1>
                 <form action="LenguajeSelectorController" method="post">
-                    <div class="form-group">
-                        <label for="idioma">Seleccione su idioma:</label>
+                    <div class="form-group"> 
+                    <c:choose>
+                        <c:when test="${cookie.idioma.value eq 'es'}"><label for="idioma">Seleccione su idioma:</label></c:when>
+                        <c:when test="${cookie.idioma.value eq 'en'}"><label for="idioma">Select your language</label></c:when>
+                        <c:when test="${cookie.idioma.value eq 'fr'}"><label for="idioma">Sélectionnez ton langue</label></c:when>
+                        <c:otherwise><label for="idioma">Seleccione su idioma:</label></c:otherwise>
+                    </c:choose>
                         <select id="LenguajeSelectorControlelr" name="idioma" class="form-control">
                             <option value="es" <c:if test="${cookie.idioma.value eq 'es'}">selected</c:if>>Español</option>
                             <option value="en" <c:if test="${cookie.idioma.value eq 'en'}">selected</c:if>>English</option>
